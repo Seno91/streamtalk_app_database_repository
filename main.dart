@@ -1,8 +1,23 @@
 import 'dart:io';
 
+import 'models/movies.dart';
 import 'models/user.dart';
 
 void main() {
+  List<Movie> movies = [
+    Movie(
+      titleName: "John Wick",
+      category: "Action",
+      cast: "Keanu Reeves",
+      productionYear: 2020,
+    ),
+    Movie(
+      titleName: "John Wick 2",
+      category: "Action",
+      cast: "Keanu Reeves",
+      productionYear: 2022,
+    ),
+  ];
   print("Welcome to StreamTalk!");
   bool isProgramRunning = true;
 
@@ -45,6 +60,9 @@ void main() {
         }
         if (logInCorrect) {
           print("Succesfully LoggedIn!");
+          for (var movie in movies) {
+            print(movie);
+          }
         } else {
           print("Username or Password incorrect. Try again!");
         }
