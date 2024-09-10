@@ -1,0 +1,2 @@
+# dart_streamtalk_database_reposiroty
+Eine Version von Streamtalk mit einer eingefügten DatabaseRepository
