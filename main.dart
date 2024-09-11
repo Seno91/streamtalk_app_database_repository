@@ -1,27 +1,16 @@
 import 'dart:io';
 
+import 'data/database_repository.dart';
+import 'data/mock_database.dart';
 import 'models/movies.dart';
 import 'models/user.dart';
 
 void main() {
-  List<Movie> movies = [
-    Movie(
-      titleName: "John Wick",
-      category: "Action",
-      cast: "Keanu Reeves",
-      productionYear: 2020,
-    ),
-    Movie(
-      titleName: "John Wick 2",
-      category: "Action",
-      cast: "Keanu Reeves",
-      productionYear: 2022,
-    ),
-  ];
+  DatabaseRepository mockDatabase = MockDatabase();
+
   print("Welcome to StreamTalk!");
   bool isProgramRunning = true;
 
-  List<User> users = [];
   while (isProgramRunning) {
     print("(S)ign up or (L)ogIn!");
     String userChoiceInput = stdin.readLineSync()!;
@@ -37,10 +26,9 @@ void main() {
         userPasswordAfterSignUp = stdin.readLineSync()!;
         stdout.write("E-mail: ");
         userEmailAfterSignUp = stdin.readLineSync()!;
-        users.add(User(
-            name: userNameAfterSignUp,
-            password: userPasswordAfterSignUp,
-            email: userEmailAfterSignUp));
+        mockDatabase.registrateNewUser(
+            userNameAfterSignUp, userPasswordAfterSignUp, userEmailAfterSignUp);
+
         print("Succesfully created an Account! now LogIn and Enjoy!");
       case "l" || "L":
         isProgramRunning = true;
@@ -51,7 +39,7 @@ void main() {
 
         String userPasswordInput = stdin.readLineSync()!;
         bool logInCorrect = false;
-        for (User currentUser in users) {
+        for (User currentUser in mockDatabase.getAllUsers()) {
           if (userNameInput == currentUser.name &&
               userPasswordInput == currentUser.password) {
             logInCorrect = true;
@@ -60,7 +48,7 @@ void main() {
         }
         if (logInCorrect) {
           print("Succesfully LoggedIn!");
-          for (var movie in movies) {
+          for (var movie in mockDatabase.getRecommendations()) {
             print(movie);
           }
         } else {
