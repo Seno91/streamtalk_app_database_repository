@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'data/database_repository.dart';
 import 'data/mock_database.dart';
-import 'models/movies.dart';
 import 'models/user.dart';
 
 void main() {
