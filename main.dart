@@ -8,6 +8,7 @@ void main() {
   DatabaseRepository mockDatabase = MockDatabase();
 
   print("Welcome to StreamTalk!");
+  print("For Movie lovers :)");
   bool isProgramRunning = true;
 
   while (isProgramRunning) {
