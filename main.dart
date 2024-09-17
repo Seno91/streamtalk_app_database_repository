@@ -26,8 +26,10 @@ void main() {
         userPasswordAfterSignUp = stdin.readLineSync()!;
         stdout.write("E-mail: ");
         userEmailAfterSignUp = stdin.readLineSync()!;
-        mockDatabase.registrateNewUser(
-            userNameAfterSignUp, userPasswordAfterSignUp, userEmailAfterSignUp);
+        mockDatabase.addUser(User(
+            email: userEmailAfterSignUp,
+            name: userNameAfterSignUp,
+            password: userPasswordAfterSignUp));
 
         print("Succesfully created an Account! now LogIn and Enjoy!");
       case "l" || "L":

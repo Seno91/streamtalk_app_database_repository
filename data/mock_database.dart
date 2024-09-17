@@ -20,22 +20,17 @@ class MockDatabase implements DatabaseRepository {
   ];
 
   @override
-  void addRecommendation(
-      String titleName, String category, String cast, int productionYear) {
-    Movie currentMovie = Movie(
-        titleName: titleName,
-        category: category,
-        cast: cast,
-        productionYear: productionYear);
+  void addRecommendation(Movie movie) {
+    Movie currentMovie = movie;
     movies.add(currentMovie);
   }
 
   @override
-  void deleteAccount(String name, String password, String email) {
-    for (User user in users) {
-      if (user.name == name &&
-          user.password == password &&
-          user.email == email) {
+  void deleteUser(User user) {
+    for (User userInList in users) {
+      if (user.name == userInList.name &&
+          user.password == userInList.password &&
+          user.email == userInList.email) {
         users.remove(user);
         break;
       }
@@ -53,8 +48,7 @@ class MockDatabase implements DatabaseRepository {
   }
 
   @override
-  void registrateNewUser(String name, String password, String email) {
-    User currentUser = User(name: name, password: password, email: email);
-    users.add(currentUser);
+  void addUser(User user) {
+    users.add(user);
   }
 }

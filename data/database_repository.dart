@@ -4,12 +4,11 @@ import '../models/user.dart';
 abstract class DatabaseRepository {
   List<User> getAllUsers();
 
-  void registrateNewUser(String name, String password, String email);
+  void addUser(User user);
 
-  void deleteAccount(String name, String password, String email);
+  void deleteUser(User user);
 
   List<Movie> getRecommendations();
 
-  void addRecommendation(
-      String titleName, String category, String cast, int productionYear);
+  void addRecommendation(Movie movie);
 }
